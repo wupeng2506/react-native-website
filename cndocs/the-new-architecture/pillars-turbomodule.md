@@ -60,7 +60,7 @@ TurboModulesGuide
 <Tabs groupId="turbomodule-specs" defaultValue={constants.defaultJavaScriptSpecLanguages} values={constants.javaScriptSpecLanguages}>
 <TabItem value="flow">
 
-```typescript title="NativeCalculator.js"
+```typescript title="js/NativeCalculator.ts"
 // @flow
 import type { TurboModule } from 'react-native/Libraries/TurboModule/RCTExport';
 import { TurboModuleRegistry } from 'react-native';
@@ -151,7 +151,7 @@ shared 是 `package.json` 文件中的一个配置项，它将在 yarn 安装您
     "type": "modules",
     "jsSrcsDir": "js",
     "android": {
-      "javaPackageName": "com.calculator"
+      "javaPackageName": "com.RTNCalculator"
     }
   }
 }
@@ -234,8 +234,8 @@ android
         ├── AndroidManifest.xml
         └── java
             └── com
-                └── rtncalculator
-                    └── RTNCalculatorPackage.java
+                └── RTNCalculator
+                    └── CalculatorPackage.java
 ```
 
 #### `build.gradle`
@@ -293,7 +293,7 @@ dependencies {
 
 最后，您需要一个继承 `TurboReactPackage` 接口的类。在运行 **Codegen** 前，您不用完整实现这个类。对于 App 而言，一个没有实现接口的空类就已经能当做一个 React Native 依赖，**Codegen** 会尝试生成其脚手架代码。
 
-创建 `android/src/main/java/com/rtncalculator` 目录，在这个目录内创建 `RTNCalculatorPackage.java` 文件
+创建 `android/src/main/java/com/RTNCalculator` 目录，在这个目录内创建 `CalculatorPackage.java` 文件
 
 ```java title="RTNCalculatorPackage.java"
 package com.RTNCalculator;
@@ -683,7 +683,7 @@ import {
   Text,
   Button
 } from 'react-native';
-import RTNCalculator from 'rtn-calculator/js/NativeCalculator.js';
+import RTNCalculator from 'rtn-calculator/js/NativeCalculator.ts';
 
 const App: () => Node = () => {
   const [result, setResult] = useState<number | null>(null);
